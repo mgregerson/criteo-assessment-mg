@@ -8,8 +8,6 @@ export const App = (props) => {
   const [notes, setNotes] = useState([]);
   const [selected, setSelected] = useState(null);
 
-  console.log("selected=", selected);
-
   useEffect(() => {
     // Fetch notes when the component is mounted
     const fetchData = async () => {
@@ -33,7 +31,7 @@ export const App = (props) => {
   // Save note to service
   const onSubmit = (updatedNote) => {
     service.saveNote(updatedNote);
-    setNotes([...service.notes]); // Create a new array to trigger a re-render
+    setNotes([...service.notes]);
     setSelected(null);
   };
 
@@ -42,6 +40,7 @@ export const App = (props) => {
     setSelected(null);
   };
 
+  // Handle change of a note
   const onChange = (updatedNote) => {
     setSelected(updatedNote);
   };
